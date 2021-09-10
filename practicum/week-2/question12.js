@@ -14,6 +14,30 @@ output: 4 because the following partition has the highest number of balanced sub
           'ab', 'aabb', 'ab', 'ab'
 */
 
+/*
+  For this question you first need to have a function that lists all possible partitions 
+  for any given string. Here is the function that does that. You can call this function in your 
+  maxBalanceNumber function.
+*/
+function* all_partitions(string) {
+  for (var cutpoints = 0; cutpoints < (1 << (string.length - 1)); cutpoints++) {
+      var result = [];
+      var lastcut = 0;
+      for (var i = 0; i < string.length - 1; i++) {
+          if (((1 << i) & cutpoints) !== 0) {
+              result.push(string.slice(lastcut, i + 1));
+              lastcut = i + 1;
+          }
+      }
+      result.push(string.slice(lastcut));
+      yield result;
+  }
+}
+// Here is how you can use the utility function all_partitions:
+for (var partition of all_partitions("abaabbabab")) {
+  console.log(partition);
+}
+
 var maxBalanceNumber = function(input) {
 
 };
