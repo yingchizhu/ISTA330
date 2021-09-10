@@ -1,14 +1,23 @@
 /*
-Given an integer n, return difference between the maximum and the minimum of its digits.
+Given an array of integers, input, representing a list encoded, decode the list.
+Every pair (2*i, 2*i + 1) of elements in the input, 
+means in the decoded list we have as many as input[2*i]'s of the quantity  input[2*i + 1].
 
 
 Example:
-input: 472
-output: 7 - 2 = 5
+input: [2, 5, 4, 2] (this means in the encoded list we will have two 5's and four 2's )
+output: [5, 5, 2, 2, 2, 2]
 */
 
-var maxMinusMin = function(n) {
-    let str = n.toString();
-    let myArray= str.split("");
-    return (Math.max.apply(null, myArray)-Math.min.apply(null, myArray))
+var decode = function(input) {
+    let myArray = new Array;
+    for(i = 0; i<(input.length-1); i+=2){
+        for(j = 0; j<input[i];j++){
+            myArray.push(input[i+1])
+        }
+
+    }
+    return myArray;
+
+
 };
