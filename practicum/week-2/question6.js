@@ -7,4 +7,15 @@ output: 3
 
 var median = function(input) {
 
+    if(input.length%2 ==0){
+        var index =input.length/2 - 1
+        return ((input[index]+input[index+1])/2);
+        
+
+    }
+    else{
+        
+        return input[Math.ceil((input.length)/2)]
+    }
+
 };
