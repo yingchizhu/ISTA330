@@ -17,5 +17,4 @@ var median = function(input) {
         
         return input[Math.ceil((input.length)/2)]
     }
-
-};
+}

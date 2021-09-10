@@ -1,19 +1,25 @@
 /*
-We have a string, input, and an integer array, shuffleIndices.
-We want to shuffle the string based on the shufleIndices array.
+Given an array of integers, input, representing a list encoded, decode the list.
+Every pair (2*i, 2*i + 1) of elements in the input, 
+means in the decoded list we have as many as input[2*i]'s of the quantity  input[2*i + 1].
+
 
 Example:
-input: 'llheo', shuffleIndices = [2, 3, 0, 1, 4]
-output: 'hello'
-
+input: [2, 5, 4, 2] (this means in the encoded list we will have two 5's and four 2's )
+output: [5, 5, 2, 2, 2, 2]
 */
 
-var suffleString = function(input, shuffleIndices) {
-    let curr_index=0;
-    let word= [];
-    for (i = 0;i<input.length;i++){
-        curr_index=shuffleIndices[i];
-        word[curr_index] = input[i];
+
+var decode = function(input) {
+    let myArray = new Array;
+    for(i = 0; i<(input.length-1); i+=2){
+        for(j = 0; j<input[i];j++){
+            myArray.push(input[i+1])
+        }
+
     }
-    return word.join('');
+    return myArray;
+
+
 };
+
