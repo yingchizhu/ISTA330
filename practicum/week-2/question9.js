@@ -1,19 +1,14 @@
 /*
-We have a string, input, and an integer array, shuffleIndices.
-We want to shuffle the string based on the shufleIndices array.
+Given an integer n, return difference between the maximum and the minimum of its digits.
+
 
 Example:
-input: 'llheo', shuffleIndices = [2, 3, 0, 1, 4]
-output: 'hello'
-
+input: 472
+output: 7 - 2 = 5
 */
 
-var suffleString = function(input, shuffleIndices) {
-    let curr_index=0;
-    let word= [];
-    for (i = 0;i<input.length;i++){
-        curr_index=shuffleIndices[i];
-        word[curr_index] = input[i];
-    }
-    return word.join('');
+var maxMinusMin = function(n) {
+    let str = n.toString();
+    let myArray= str.split("");
+    return (Math.max.apply(null, myArray)-Math.min.apply(null, myArray))
 };
