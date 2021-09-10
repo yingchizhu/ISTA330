@@ -15,5 +15,34 @@ output: 4 because the following partition has the highest number of balanced sub
 */
 
 var maxBalanceNumber = function(input) {
+        let count =0;
+        let max = 0;
+        let a=0;
+        let b=0;
+        let flag = 0;
 
+        for(i = 0; i<input.length;i++){
+          if(input[i]=="a"){
+            if (flag == 1)
+            {
+              flag = 0;
+              b = 0;
+              count = 0;
+              a = 0;
+            }
+            a++;
+            count++;
+          }
+          else if (input[i]=="b"){
+            b++;
+            count++;
+            flag = 1;
+          }
+          if(a===b){
+            
+            if (count > max)
+              max = count
+          }
+        }
+        return max;
 };
