@@ -13,5 +13,35 @@ so there are two groups with the largest size.
 */
 
 var largestGroupsCount = function(n) {
+    var digitsGroup = {};
+    for (let i = 1; i <= n; i++) {
+        let index = 0;
+        let x = i;
+        while(x > 0) {
+            index += x % 10;
+            x = Math.floor(x / 10);
+            
+        }
+        if (index in digitsGroup) {
+            digitsGroup[index]++;
+        }
+        else {
+            digitsGroup[index] = 1;
+        }
+    }
+    
 
+    var max = 0;
+    var count = 0;
+    for (let i in digitsGroup) {
+
+        if (digitsGroup[i] > max) {
+            max = digitsGroup[i];
+            count = 0;
+        } 
+        if (digitsGroup[i] === max) {
+            count++;
+        } 
+    }
+    return count;
 };

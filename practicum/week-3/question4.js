@@ -13,5 +13,12 @@ Example:
 */
 
 var hasDuplicates = function(input) {
+    input.sort();
+    for(var i=0; i<input.length; i++){
+        if(input[i] == input[i+1]){
+            return true
+        }
+    }
+    return false;
 
 };

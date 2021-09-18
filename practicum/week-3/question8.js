@@ -13,5 +13,21 @@ output: 3
 */
 
 var d_integer = function(input) {
+    let output =-1;
+    for(var i=0;i<input.length;i++){
+        count =0;
+        for(var j=0;j <input.length;j++){
+            if ((input[i]==input[j])){
+            count++;
+             }
+        }
+        if (count == input[i]){
+            output=input[i]
+        }
+     
+
+
+    }
+    return output;
 
 };

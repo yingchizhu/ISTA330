@@ -9,5 +9,18 @@ Given n, calculate F(n).
 */
 
 var F = function(n) {
+    if (n <2){
+        return n;
+    }
+    
+    let output =[0,1];
+    for(let i=2;i<=n; i++){
+        output.push(output[i-2]+output[i-1]);
+      
+    }
+    
+    return output[n];
+  };
 
-};
+
+

@@ -14,5 +14,21 @@ output: 1
 */
 
 var d_count = function(input1, input2, d) {
+    let count =0;
+    for (var i=0; i<input1.length;i++){
+        let flag= true;
+        for(var j=0; j<input2.length;j++){
+            if (Math.abs(input1[i]-input2[j])<=d){
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            count++;
+            
+        }
+    }
+    return count;
+    
 
 };
