@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,7 @@
         So, for example if a user clicks on the flower lily,
         then the flowers should be rearranged as:
         <br />
-        <table>
+        <table id="table">
             <tr>
                 <td>
                     lily
@@ -83,8 +84,8 @@
         }
         let daffodil = new Flower('Daffodil', 'daffodil.png');
         let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-        let lily = new Flower('Lily', 'lily.png');
-        let daisy = new Flower('Daisy', 'daisy.png');
+        let lily = new Flower('Lily', 'lily.jpg');
+        let daisy = new Flower('Daisy', 'daisy.jpg');
         let sunflower = new Flower('Sunflower', 'sunflower.png');
         let tulip = new Flower('Tulip', 'tulip.png');
         let rose = new Flower('Rose', 'rose.png');
@@ -100,6 +101,47 @@
             rose,
             waterlily
         ];
+
+        for(var i =0; i<flowers.length; i++){
+            for(var j =0; j<flowers.length; j++){
+                if(flowers[i].name < flowers[j].name){
+                    let temp = flowers[i];
+                    flowers[i] = flowers[j];
+                    flowers[j] = temp;
+                }
+            }
+        }
+
+        function reloadImage(firstIndex) {
+            for (var i = 0; i < div.children.length; i++) {
+                let oneDiv = div.children[i]
+                var index = (firstIndex + i) % 8
+                oneDiv.children[1].innerText = flowers[index].name
+                oneDiv.children[0].setAttribute('src', './images/'+flowers[index].picture);
+                oneDiv.children[0].setAttribute('onClick', 'reloadImage('+index+')')
+                
+            }
+        }
+
+        var div = document.getElementById("flowersDiv");
+
+        for(let i =0; i<flowers.length; i++){
+            var div1 = document.createElement("div");
+            div1.setAttribute('style', 'text-align:center;display:inline-block;width:25%;');
+
+            var img = document.createElement("img");
+            img.setAttribute('src', './images/'+flowers[i].picture);
+            img.setAttribute('onClick', 'reloadImage('+i+')')
+            div1.appendChild(img);
+            
+            var p = document.createElement("p");
+            p.innerText = flowers[i].name;
+            div1.appendChild(p);
+
+            var br = document.createElement("br");
+            div.appendChild(div1);
+        }
+
     </script>
 </body>
 
