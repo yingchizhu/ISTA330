@@ -13,6 +13,7 @@ output: 3
 */
 
 var d_integer = function(input) {
+    let myArray =[];
     let output =-1;
     for(var i=0;i<input.length;i++){
         count =0;
@@ -22,12 +23,19 @@ var d_integer = function(input) {
              }
         }
         if (count == input[i]){
-            output=input[i]
+            myArray.push(count);
         }
      
 
 
     }
-    return output;
+    if (myArray.length !=0){
+        output = myArray.reduce(function(a, b) {
+            return Math.max(a, b); 
+        });
+        return output;
+    }
+    return -1;
+        
 
 };
