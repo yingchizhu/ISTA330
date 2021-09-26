@@ -117,7 +117,7 @@
                 let oneDiv = div.children[i]
                 var index = (firstIndex + i) % 8
                 oneDiv.children[1].innerText = flowers[index].name
-                oneDiv.children[0].setAttribute('src', './images/'+flowers[index].picture);
+                oneDiv.children[0].setAttribute('src', flowers[index].picture);
                 oneDiv.children[0].setAttribute('onClick', 'reloadImage('+index+')')
                 
             }
@@ -130,7 +130,7 @@
             div1.setAttribute('style', 'text-align:center;display:inline-block;width:25%;');
 
             var img = document.createElement("img");
-            img.setAttribute('src', './images/'+flowers[i].picture);
+            img.setAttribute('src', flowers[i].picture);
             img.setAttribute('onClick', 'reloadImage('+i+')')
             div1.appendChild(img);
             
