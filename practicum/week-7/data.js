@@ -1,4 +1,4 @@
-import flowers from './flowers';
+const { flowers } = require('./flowers');
 
 let generateQuestions = () => {
     let questions = [];
