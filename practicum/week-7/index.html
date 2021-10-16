@@ -13,32 +13,36 @@
 <body>
    <div>
        In this practicum you will develop a <a href="https://restfulapi.net">REST API</a> using Nodejs and 
-       Express. You will update your Imagequiz application that you developed in Practicum 6 to use this API to fetch 
-       your data from a server. You will deploy the REST API server on Heroku.
+       Express. You will deploy the REST API server on Heroku.
 
        <ul>
-           <li>Create a new github repository, name it "imagequiz-serverside".</li>
+           <li>Create a new github repository, name it "imagequiz-backend". Copy the files flowers.js, data.js, 
+               custoemrs.js and scores.js to 
+               your "imagequiz-backend" repository.
+           </li>
            <li>
-            Develop a REST API for your imagequiz web application and push the code to your 
-            imagequiz-serverside repository. The API should have the following methods:
+            Develop a REST API with the follwoing specification and push the code to your 
+            imagequiz-backend repository. The API should have the following methods:
             <ol>
-                <li>'/quizzes' - a GET method returning all the quizzes</li>
-                <li>'/quiz/:id' - a GET method returning the quiz number (:id) questions</li>
-                <li>'/score' - a POST method storing the score for a quiz taken by a user</li>
+                <li>'/register' - a POST method that stores the name, email and password 
+                    of the quiz taker in your custoemrs.js file.</li>
+                <li>'/login' - a POST method that determinse whether the provided credentials are valid or not.</li>
+                <li>'/flowers' - a GET method returning all the flowers from your flowers.js file.</li>
+                <li>'/quizzes' - a GET method returning all the quizzes from your data.js file.</li>
+                <li>'/quiz/:id' - a GET method returning the specified quiz. </li>
+                <li>'/score/:quiztaker/:quizid/:score' - a POST method storing the score for a quiz taken by a quiz taker.</li>
+                <li>'/scores/:quiztaker/:quizid' - a GET method returning the scores of the specified quiz taker for the specified quiz.</li>
             </ol>
            </li>
            <li>
-            Then deploy your REST API to Heroku. You should follow the follwoing naming convention for
-             your Heroku deployment: the name of your Heroku application should be "yourgithubusername-imagequiz". 
+            Then deploy your REST API to Heroku (for instruction on how to do this, refer to the lecture 'REST API in node.js' on d2l). 
+            You should follow the follwoing naming convention for
+             your Heroku deployment: the name of your Heroku application should be "yourgithubusername-imagequiz-backend". 
            </li>
-           <li>
-            Then in your imagequiz web application, delete the files "data.js" and "flowers.js". 
-            Then update your Imagequiz web application to get your data from the REST API you deployed on Heroku.
-           </li>
+          
        </ul>
 
-       For more information on how to do this practicum refer to the lectures "How to deploy a nodejs application to Heroku"
-       and "How to connect to a REST API from a REACT application".
+       
        
        
    </div>
