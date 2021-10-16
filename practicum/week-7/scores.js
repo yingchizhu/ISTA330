@@ -3,4 +3,4 @@ let scores = [];
 
 scores.push({testTaker: '', quizname: '', score: '', date: ''});
 
-export default scores;
+exports.scores = scores;

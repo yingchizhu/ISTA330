@@ -44,4 +44,4 @@ let generateQuizzes = () => {
 let quizzes = generateQuizzes();
 
 
-export default quizzes;
+exports.quizzes = quizzes;
