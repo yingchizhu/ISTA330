@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--DO NOT CHANGE THE FOLLOWING LINES !!!-->
     <link rel="stylesheet" href="styles.css">
-    <script src="https://habahram.github.io/ISTA330/practicum/week-7/tests.js" type="text/javascript"></script>
+    <!-- <script src="https://habahram.github.io/ISTA330/practicum/week-7/tests.js" type="text/javascript"></script> -->
+    <script src="tests.js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 
@@ -26,16 +27,20 @@
             <ol>
                 <li>'/register' - a POST method that stores the name, email and password 
                     of the quiz taker in your custoemrs.js file.</li>
-                <li>'/login' - a POST method that determinse whether the provided credentials are valid or not.</li>
-                <li>'/flowers' - a GET method returning all the flowers from your flowers.js file.</li>
+                <li>'/login' - a POST method that determinse whether the provided credentials are valid or not.
+                    The method should return an object with the follwoign attributes: isvalid, message where isvalid is 
+                    a boolean value and message is a string.
+                </li>
+                <li>'/flowers' - a GET method returning the list of all the flowers from your flowers.js file.</li>
                 <li>'/quizzes' - a GET method returning all the quizzes from your data.js file.</li>
                 <li>'/quiz/:id' - a GET method returning the specified quiz. </li>
-                <li>'/score/:quiztaker/:quizid/:score' - a POST method storing the score for a quiz taken by a quiz taker.</li>
+                <li>'/score' - a POST method storing the score for a quiz taken by a quiz taker.</li>
                 <li>'/scores/:quiztaker/:quizid' - a GET method returning the scores of the specified quiz taker for the specified quiz.</li>
+                <li>All your methods in your API should return json objects. </li>
             </ol>
            </li>
-           <li>
-            Then deploy your REST API to Heroku (for instruction on how to do this, refer to the lecture 'REST API in node.js' on d2l). 
+           <li>            
+            Deploy your REST API to Heroku (for instruction on how to do this, refer to the lecture 'REST API in node.js' on d2l). 
             You should follow the follwoing naming convention for
              your Heroku deployment: the name of your Heroku application should be "yourgithubusername-imagequiz-backend". 
            </li>

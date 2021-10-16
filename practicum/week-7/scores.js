@@ -1,6 +1,6 @@
 
 let scores = [];
 
-scores.push({testTaker: '', quizname: '', score: '', date: ''});
+scores.push({testTaker: '', quizId: '', score: '', date: ''});
 
 exports.scores = scores;
