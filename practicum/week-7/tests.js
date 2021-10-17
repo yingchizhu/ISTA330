@@ -78,6 +78,6 @@ window.onload = () => {
      .catch(e => testDiv.innerHTML += `<h2>Error in /scores get method: ${e}</h2>`)
      .then();
     let iframe = document.getElementById('myApplicationFrame');
-    //iframe.setAttribute('src', api);
+    iframe.setAttribute('src', api);
 }
 
