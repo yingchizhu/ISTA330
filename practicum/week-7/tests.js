@@ -33,7 +33,13 @@ window.onload = () => {
              email: testTakerEmail,
              password: password
          })
-     }).then(x => x.json()).
+     }).then(x => {
+         if(x.status == 200) {
+            return x.json();
+         } else {
+             throw Error(x.message);
+         }         
+        }).
      then(x => testDiv.innerHTML += `<h2>The test taker ${testTakerEmail} registered successfully.</h2>`)
      .catch(e => testDiv.innerHTML += `<h2>Error in /register method: ${e}</h2>`)
      .then(() => fetch(`${api}/login`, {
