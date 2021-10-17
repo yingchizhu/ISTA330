@@ -26,7 +26,8 @@
             imagequiz-backend repository. The API should have the following methods:
             <ol>
                 <li>'/register' - a POST method that stores the name, email and password 
-                    of the quiz taker in your custoemrs.js file.</li>
+                    of the quiz taker in your custoemrs.js file. If a customer with the same email already 
+                exists you should return a response with the status code 403.</li>
                 <li>'/login' - a POST method that determinse whether the provided credentials are valid or not.
                     The method should return an object with the follwoign attributes: isvalid, message where isvalid is 
                     a boolean value and message is a string.
