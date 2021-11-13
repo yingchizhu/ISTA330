@@ -6,7 +6,10 @@ window.onload = () => {
     let username = hostname.split('.')[0];
     console.log(username);
     let iframe = document.getElementById('myApplicationFrame');
-    iframe.setAttribute('src', `https://${username}.github.io/imagequiz/`);
+    let imagequiz_frontend = `https://${username}.github.io/imagequiz/`;
+    iframe.setAttribute('src', imagequiz_frontend);
+    let p = document.getElementById("goToWebsite");
+    p.innerHTML = `<a href="${imagequiz_frontend}">${imagequiz_frontend}</a>`;
     
     
     let names = ['Fred', 'John', 'Philip', 'Pablo', 'Toby', 'Rio'];
