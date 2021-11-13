@@ -98,7 +98,6 @@ window.onload = () => {
         .then(x => testDiv.innerHTML += `<h2>The test taker ${testTakerEmail} has ${x.length} submitted scores for quiz ${quizId}.</h2>`)
         .catch(e => testDiv.innerHTML += `<h2>Error in /scores get method: ${e}</h2>`)
         .then();
-    let iframe = document.getElementById('myApplicationFrame');
-    iframe.setAttribute('src', api);
+    
 }
 
