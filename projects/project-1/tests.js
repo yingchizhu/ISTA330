@@ -147,7 +147,7 @@ window.onload = () => {
         .then(x => {
             if (x.done) {
                 testDiv.innerHTML += `<h2>
-                The review ${place} was added successfully.
+                The review for ${place} was added successfully.
                 The review id is ${x.id}.
                 </h2>`;
                 reviewId = x.id;
@@ -204,7 +204,7 @@ window.onload = () => {
         .then(x => {
             if (x.done) {
                 testDiv.innerHTML += `<h2>
-                The review ${place} was updated successfully.                
+                The review ${reviewId} was updated successfully.                
                 </h2>`;
                 reviewId = x.id;
             } else {
@@ -215,6 +215,50 @@ window.onload = () => {
             }
         })
         .catch(e => testDiv.innerHTML += `<h2>Error in /review PUT method: ${e}</h2>`)
+        .then(() => fetch(`${api}/place/${place_id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }           
+        }))
+        .then(x => x.json())
+        .then(x => {
+            if (x.done) {
+                testDiv.innerHTML += `<h2>
+                The place ${place} was deleted successfully at ${Date.now()}.                
+                </h2>`;
+                
+            } else {
+                testDiv.innerHTML += `<h2>
+                The place could not be deleted.
+                There was an error on the server: ${x.message}            
+                </h2>`;
+            }
+        })
+        .catch(e => testDiv.innerHTML += `<h2>Error in /place Delete method: ${e}</h2>`)
+        .then(() => fetch(`${api}/review/${review_id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }           
+        }))
+        .then(x => x.json())
+        .then(x => {
+            if (x.done) {
+                testDiv.innerHTML += `<h2>
+                The review number ${review_id} for place ${place} was deleted successfully at ${Date.now()}.                
+                </h2>`;
+                
+            } else {
+                testDiv.innerHTML += `<h2>
+                The review could not be deleted.
+                There was an error on the server: ${x.message}            
+                </h2>`;
+            }
+        })
+        .catch(e => testDiv.innerHTML += `<h2>Error in /review Delete method: ${e}</h2>`)
 
 
 
