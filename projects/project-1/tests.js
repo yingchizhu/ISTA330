@@ -23,9 +23,9 @@ window.onload = () => {
         }
     }
     let showPosition = (position) => {
-        currentPosition = position;
+        currentPosition = position.coords;
         p.innerHTML += `<br>Current location:<br>Latitude:  ${position.coords.latitude} <br>Longitude:  ${position.coords.longitude}`;
-        
+
     }
     getLocation();
 
@@ -204,32 +204,24 @@ window.onload = () => {
             }
         })
         .catch(e => testDiv.innerHTML += `<h2>Error in second /review method: ${e}</h2>`)
-        .then(() => fetch(`${api}/search?search_term=${place}&user_location=Tucson,AZ`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                place_id: placeId, comment: 'very good!', rating: 5
-            })
-        }))
+        .then(() => fetch(`${api}/search?search_term=${place}&user_location=${currentPosition.latitude},${currentPosition.longitude}`,
+        ))
         .then(x => x.json())
         .then(x => {
             if (x.done) {
                 testDiv.innerHTML += `<h2>
-                A review for ${place} with a rating of 5 was added successfully.
-                The review id is ${x.id}.
+                For the query search_term=${place}&user_location=${currentPosition.latitude},${currentPosition.longitude}
+                the seach API returned ${x.result.length} records.
                 </h2>`;
                 reviewId = x.id;
             } else {
                 testDiv.innerHTML += `<h2>
-                The review could not be added to the system.
+                The search could not be completed.
                 There was an error on the server: ${x.message}            
                 </h2>`;
             }
         })
-        .catch(e => testDiv.innerHTML += `<h2>Error in second /review method: ${e}</h2>`)
+        .catch(e => testDiv.innerHTML += `<h2>Error in  /search method: ${e}</h2>`)
         .then(() => fetch(`${api}/place`, {
             method: 'PUT',
             headers: {
