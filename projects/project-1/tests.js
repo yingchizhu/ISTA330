@@ -10,7 +10,7 @@ window.onload = () => {
     //iframe.setAttribute('src', imagequiz_frontend);
     let p = document.getElementById("goToWebsite");
     p.innerHTML += `<h2>****************************************************************************************</h2>`;
-    p.innerHTML += `The imagequiz front-end is available at <a href="${imagequiz_frontend}">${imagequiz_frontend}</a>`;
+    p.innerHTML += `The findmynearbyplaces front-end will be available at <a href="${imagequiz_frontend}">${imagequiz_frontend}</a>`;
 
 
     let names = ['Fred', 'John', 'Philip', 'Pablo', 'Toby', 'Rio'];
