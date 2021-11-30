@@ -215,7 +215,7 @@ window.onload = () => {
             }
         })
         .catch(e => testDiv.innerHTML += `<h2>Error in /review PUT method: ${e}</h2>`)
-        .then(() => fetch(`${api}/place/${place_id}`, {
+        .then(() => fetch(`${api}/place/${placeId}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -237,7 +237,7 @@ window.onload = () => {
             }
         })
         .catch(e => testDiv.innerHTML += `<h2>Error in /place Delete method: ${e}</h2>`)
-        .then(() => fetch(`${api}/review/${review_id}`, {
+        .then(() => fetch(`${api}/review/${reviewId}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -248,7 +248,7 @@ window.onload = () => {
         .then(x => {
             if (x.done) {
                 testDiv.innerHTML += `<h2>
-                The review number ${review_id} for place ${place} was deleted successfully at ${Date.now()}.                
+                The review number ${reviewId} for place ${place} was deleted successfully at ${Date.now()}.                
                 </h2>`;
                 
             } else {
