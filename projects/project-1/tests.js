@@ -212,8 +212,21 @@ window.onload = () => {
                 testDiv.innerHTML += `<h2>
                 For the query search_term=${place}&user_location=${currentPosition.latitude},${currentPosition.longitude}
                 the seach API returned ${x.result.length} records.
+                The results:
                 </h2>`;
-                reviewId = x.id;
+                if(x.result.length > 0){
+                    testDiv.innerHTML += `<ol>`;
+                   for (const element of result) {
+                       testDiv.innerHTML += `<li>`;
+                       let p = [];
+                       for (const key in element) {
+                         p.push(`${key}: ${element[key]}`);
+                       }
+                       testDiv.innerHTML += p.join(',');
+                       testDiv.innerHTML += `</li>`;
+                   }
+                    testDiv.innerHTML += `</ol>`;
+                }
             } else {
                 testDiv.innerHTML += `<h2>
                 The search could not be completed.
@@ -221,7 +234,7 @@ window.onload = () => {
                 </h2>`;
             }
         })
-        .catch(e => testDiv.innerHTML += `<h2>Error in  /search method: ${e}</h2>`)
+        .catch(e => testDiv.innerHTML += `<h2>Error in /search method: ${e}</h2>`)
         .then(() => fetch(`${api}/place`, {
             method: 'PUT',
             headers: {
