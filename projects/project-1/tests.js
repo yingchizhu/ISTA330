@@ -31,6 +31,7 @@ window.onload = () => {
 
         document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
     }
+    getLocation();
 
 
 
