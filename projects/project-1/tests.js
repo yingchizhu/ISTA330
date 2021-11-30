@@ -10,7 +10,7 @@ window.onload = () => {
     //iframe.setAttribute('src', imagequiz_frontend);
     let p = document.getElementById("goToWebsite");
     p.innerHTML += `<h2>****************************************************************************************</h2>`;
-    p.innerHTML += `The findmynearbyplaces front-end will be available at <a href="${imagequiz_frontend}">${imagequiz_frontend}</a>`;
+    p.innerHTML += `The findnearbyplaces front-end will be available at <a href="${imagequiz_frontend}">${imagequiz_frontend}</a>`;
 
 
     let names = ['Fred', 'John', 'Philip', 'Pablo', 'Toby', 'Rio'];
@@ -24,11 +24,15 @@ window.onload = () => {
     let email = firstname + '@gmail.com';
     let password = "123";
     let category = categories[random];
-    let place = places[random];
-    let categoryId = -1;
+    let place = places[random];    
     let latitude = 32.222607 + random;
     let longitude = -110.974709 + random;
     let description = 'Family-owned and operated.';
+
+    let customerId = -1;
+    let categoryId = -1;
+    let placeId = -1;
+    let reviewId = -1;
 
     let testDiv = document.getElementById('test-the-api');
     testDiv.innerHTML += `<h2>****************************************************************************************</h2>`;
@@ -49,6 +53,7 @@ window.onload = () => {
         .then(x => {
             if (x.done) {
                 testDiv.innerHTML += `<h2>The customer ${email} registered successfully.</h2>`;
+                customerId = x.id;
             } else {
                 testDiv.innerHTML += `<h2>
             The customer could not be added to the system.
@@ -119,7 +124,7 @@ window.onload = () => {
                 The place ${place} was added successfully.
                 The place id is ${x.id}.
                 </h2>`;
-                categoryId = x.id;
+                placeId = x.id;
             } else {
                 testDiv.innerHTML += `<h2>
                 The place could not be added to the system.
@@ -128,6 +133,89 @@ window.onload = () => {
             }
         })
         .catch(e => testDiv.innerHTML += `<h2>Error in /place method: ${e}</h2>`)
+        .then(() => fetch(`${api}/review`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                place_id: placeId, comment: 'good!', rating: 4
+            })
+        }))
+        .then(x => x.json())
+        .then(x => {
+            if (x.done) {
+                testDiv.innerHTML += `<h2>
+                The review ${place} was added successfully.
+                The review id is ${x.id}.
+                </h2>`;
+                reviewId = x.id;
+            } else {
+                testDiv.innerHTML += `<h2>
+                The review could not be added to the system.
+                There was an error on the server: ${x.message}            
+                </h2>`;
+            }
+        })
+        .catch(e => testDiv.innerHTML += `<h2>Error in /review method: ${e}</h2>`)
+        .then(() => fetch(`${api}/place`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                place_id: placeId,
+                name: category,
+                category_id: categoryId,
+                latitude: latitude,
+                longitude: longitude,
+                description: description + ` updated at ${Date.now()}`
+            })
+        }))
+        .then(x => x.json())
+        .then(x => {
+            if (x.done) {
+                testDiv.innerHTML += `<h2>
+                The place ${place} was updated successfully at ${Date.now()}.                
+                </h2>`;
+                
+            } else {
+                testDiv.innerHTML += `<h2>
+                The place could not be updated.
+                There was an error on the server: ${x.message}            
+                </h2>`;
+            }
+        })
+        .catch(e => testDiv.innerHTML += `<h2>Error in /place PUT method: ${e}</h2>`)
+        .then(() => fetch(`${api}/review`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                review_id: reviewId,
+                comment: 'very good!', rating: 5
+            })
+        }))
+        .then(x => x.json())
+        .then(x => {
+            if (x.done) {
+                testDiv.innerHTML += `<h2>
+                The review ${place} was updated successfully.                
+                </h2>`;
+                reviewId = x.id;
+            } else {
+                testDiv.innerHTML += `<h2>
+                The review could not be updated.
+                There was an error on the server: ${x.message}            
+                </h2>`;
+            }
+        })
+        .catch(e => testDiv.innerHTML += `<h2>Error in /review PUT method: ${e}</h2>`)
+
 
 
 }
