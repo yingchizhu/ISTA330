@@ -26,7 +26,7 @@ window.onload = () => {
         currentPosition = position;
         p.innerHTML += `<br>Current location:<br>Latitude:  ${position.coords.latitude} <br>Longitude:  ${position.coords.longitude}`;
         let latlon = position.coords.latitude + "," + position.coords.longitude;
-        let img_url = `https://maps.googleapis.com/maps/api/staticmap?center= ${latlon}&zoom=14&size=400x300&sensor=false`;
+        let img_url = `https://maps.googleapis.com/maps/api/staticmap?center= ${latlon}&zoom=14&size=400x300&sensor=false&key=AIzaSyDcw8ZXHayNQnM272vJNuMoqhRsf6Arr8E`;
 
         document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
     }
